@@ -1,0 +1,36 @@
+[gd_scene load_steps=4 format=3 uid="uid://b181lxb2ei36a"]
+
+[ext_resource type="PackedScene" uid="uid://bwb0quf3edhav" path="res://women/women.tscn" id="1_lqldx"]
+
+[sub_resource type="Environment" id="Environment_x0bnk"]
+background_energy_multiplier = 1.84
+sdfgi_enabled = true
+fog_enabled = true
+fog_sky_affect = 0.337
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ixmmg"]
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 0.3
+
+[node name="World" type="Node2D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_x0bnk")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.995326, 0.0965754, -2.87817e-09, 0.0310639, -0.320151, 0.946857, 0.0914431, -0.942431, -0.321654, 0.729768, 2.7692, 0)
+light_energy = 0.6
+light_indirect_energy = 1.458
+light_volumetric_fog_energy = 7.4
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.156481, 0)
+material_override = SubResource("StandardMaterial3D_ixmmg")
+size = Vector3(150, 0.2, 150)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.953138, 0.302536, 0, -0.302536, 0.953138, -0.00511122, 2.16377, 3.48386)
+fov = 42.9
+
+[node name="Women" parent="." instance=ExtResource("1_lqldx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.250499, 0.966342, 0.0676641)
